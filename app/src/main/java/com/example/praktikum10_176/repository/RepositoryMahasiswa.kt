@@ -12,7 +12,7 @@ interface RepositoryMahasiswa {
 
     suspend fun deleteMahasiswa(nim: String)
 
-    suspend fun getMahasiswaById(nim: String): Mahasiswa
+    suspend fun getMahasiswabyNim(nim: String): Mahasiswa
 }
 
 class NetworkKontakRepository(
