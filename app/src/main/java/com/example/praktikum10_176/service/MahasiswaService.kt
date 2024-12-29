@@ -1,6 +1,7 @@
 package com.example.praktikum10_176.service
 
-import okhttp3.Response
+import com.example.praktikum10_176.model.Mahasiswa
+import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.DELETE
 import retrofit2.http.GET
@@ -25,8 +26,9 @@ interface MahasiswaService {
     suspend fun insertMahasiswa(@Body mahasiswa: Mahasiswa)
 
     @PUT("editmahasiswa.php/{nim}")
-    suspend fun updateMahasiswa(@Query("nim") nim: String, @Body mahasiswa: Mahasiswa)
+    suspend fun updateMahasiswa(@Query("nim") nim:String, @Body mahasiswa: Mahasiswa)
 
     @DELETE("deletemahasiswa.php/{nim}")
-    suspend fun deleteMahasiswa(@Query("nim") nim: String):Response<Void>
+    suspend fun deleteMahasiswa (@Query("nim") nim: String): Response<Void>
+
 }
