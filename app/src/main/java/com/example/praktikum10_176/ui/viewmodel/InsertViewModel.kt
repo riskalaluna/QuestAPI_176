@@ -1,7 +1,36 @@
 package com.example.praktikum10_176.ui.viewmodel
 
 import com.example.praktikum10_176.model.Mahasiswa
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.example.praktikum10_176.repository.RepositoryMahasiswa
+import kotlinx.coroutines.launch
 
+class InsertViewModel(private val mhs: RepositoryMahasiswa): ViewModel() {
+    var uiState by mutableStateOf(InsertUiState())
+        private set
+
+    fun updateInsertMhsState(insertUiEvent: InsertUiEvent){
+        uiState = InsertUiState(insertUiEvent = insertUiEvent)
+    }
+
+    suspend fun insertMhs() {
+        viewModelScope.launch {
+            try {
+                mhs.insertMahasiswa(uiState.insertUiEvent.toMhs())
+            } catch (e:Exception){
+                e.printStackTrace()
+            }
+        }
+    }
+}
+
+data class InsertUiState(
+    val insertUiEvent: InsertUiEvent = InsertUiEvent()
+)
 data class InsertUiEvent(
     val nim: String = "",
     val nama: String = "",
