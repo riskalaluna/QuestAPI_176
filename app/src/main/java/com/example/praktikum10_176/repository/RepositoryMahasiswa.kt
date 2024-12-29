@@ -1,6 +1,7 @@
 package com.example.praktikum10_176.repository
 
 import com.example.praktikum10_176.model.Mahasiswa
+import com.example.praktikum10_176.service.MahasiswaService
 import okio.IOException
 
 interface RepositoryMahasiswa {
