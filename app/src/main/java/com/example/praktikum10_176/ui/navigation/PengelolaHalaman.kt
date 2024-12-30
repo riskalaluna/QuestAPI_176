@@ -5,11 +5,16 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
 import androidx.navigation.NavHost
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
+import com.example.praktikum10_176.ui.view.DestinasiDetail
 import com.example.praktikum10_176.ui.view.DestinasiEntry
 import com.example.praktikum10_176.ui.view.DestinasiHome
+import com.example.praktikum10_176.ui.view.DestinasiUpdate
+import com.example.praktikum10_176.ui.view.DetailScreen
 import com.example.praktikum10_176.ui.view.EntryMhsScreen
 import com.example.praktikum10_176.ui.view.HomeScreen
 import com.example.praktikum10_176.ui.viewmodel.HomeViewModel
@@ -38,6 +43,27 @@ fun PengelolaHalaman(
                     }
                 }
             })
+        }
+        composable(
+            DestinasiDetail.routeWithArgs,
+            arguments = listOf(
+                navArgument(DestinasiDetail.NIM){
+                    type = NavType.StringType
+                }
+            )
+        ){
+            val nim = it.arguments?.getString(DestinasiDetail.NIM)
+            nim?.let {nim ->
+                DetailScreen(
+                    nim = nim,
+                    onBackClick = {
+                        navController.navigate(DestinasiHome.route)
+                    },
+                    onEditClick = {
+                        navController.navigate("${DestinasiUpdate.route}/$nim")
+                    },
+                )
+            }
         }
     }
 }
