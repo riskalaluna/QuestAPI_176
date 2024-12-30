@@ -17,3 +17,6 @@
 
 //HHalaman Setelah Hapus Data
 ![image](https://github.com/user-attachments/assets/88aedbdd-5e25-4eb9-ad94-d7b53def7aed)
+
+//data masuk di database phpmyadmin
+![image](https://github.com/user-attachments/assets/2c329efa-5920-4589-b6a0-89597fa1443b)
