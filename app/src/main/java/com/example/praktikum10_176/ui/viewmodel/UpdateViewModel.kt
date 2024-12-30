@@ -7,6 +7,7 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.praktikum10_176.repository.RepositoryMahasiswa
+import com.example.praktikum10_176.ui.view.DestinasiUpdate
 import kotlinx.coroutines.launch
 
 
