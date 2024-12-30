@@ -17,6 +17,7 @@ import com.example.praktikum10_176.ui.view.DestinasiUpdate
 import com.example.praktikum10_176.ui.view.DetailScreen
 import com.example.praktikum10_176.ui.view.EntryMhsScreen
 import com.example.praktikum10_176.ui.view.HomeScreen
+import com.example.praktikum10_176.ui.view.UpdateMhsScreen
 import com.example.praktikum10_176.ui.viewmodel.HomeViewModel
 
 @Composable
@@ -62,6 +63,22 @@ fun PengelolaHalaman(
                     onEditClick = {
                         navController.navigate("${DestinasiUpdate.route}/$nim")
                     },
+                )
+            }
+        }
+
+        composable(
+            "${DestinasiUpdate.route}/{nim}",
+            arguments = listOf(
+                navArgument("nim") { type = NavType.StringType }
+            )
+        ) { backStackEntry ->
+            val nim = backStackEntry.arguments?.getString("nim")
+            nim?.let { nim ->
+                UpdateMhsScreen(
+                    onBack = {
+                        navController.navigate(DestinasiHome.route) },
+                    onNavigate = { navController.navigate(DestinasiHome.route) },
                 )
             }
         }
