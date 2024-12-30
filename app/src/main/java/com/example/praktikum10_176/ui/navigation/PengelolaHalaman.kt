@@ -32,7 +32,9 @@ fun PengelolaHalaman(
         composable(DestinasiHome.route) {
             HomeScreen(
                 navigateToItemEntry = { navController.navigate(DestinasiEntry.route) },
-                onDetailClick = {
+                onDetailClick = {nim ->
+                    navController.navigate("${DestinasiDetail.route}/$nim")
+                    println("PengelolaHalaman: nim $nim")
                 }
             )
         }
